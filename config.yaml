@@ -1,0 +1,50 @@
+radio_dir: Z:\20240601-BiQiu\Radiomics
+intra_mask_id: 1
+extractor_settings: ./custom_settings/exampleMR_1mm.yaml
+task_column: label
+clinic_file: Z:\20240601-BiQiu\Clinical.csv
+survival_file: Z:\20240601-BiQiu\Survival.csv
+dataset_column: group
+ml_models:
+  - LR
+  - KNN
+  - RandomForest
+  - ExtraTrees
+  - XGBoost
+  - LightGBM
+  - SVM
+  - GradientBoost
+  - nb
+sel_model: LR
+display.fontsize: 12
+modals:
+  - T2
+  - CE
+  - ADC
+  - DWI
+subsets: [train, val, test]
+DISABLE_VIDEO: True
+model_root: Z:\20240601-BiQiu\Pathomics\models
+label_mapping:
+  0: Negative
+  1: Positive
+
+label_file: group.csv
+# label_file: split_info/label-RND-7.csv
+auto__label_file: 
+  - split_info/label-RND-0.csv
+  - split_info/label-RND-1.csv
+  - split_info/label-RND-2.csv
+  - split_info/label-RND-3.csv
+  - split_info/label-RND-4.csv
+  - split_info/label-RND-5.csv
+  - split_info/label-RND-6.csv
+  - split_info/label-RND-7.csv
+  - split_info/label-RND-8.csv
+  - split_info/label-RND-9.csv
+  
+compare_models: [FullPFS, FullOS]
+
+metric_spec: AUC
+metric_spec_ids: 
+metric_spec_agg: mean
